@@ -5,9 +5,7 @@ use axum::{
     routing::get,
     Extension, Router,
 };
-
-mod entities;
-mod schema;
+use well_written_server::schema;
 
 async fn graphql_handler(
     schema: Extension<schema::AppSchema>,

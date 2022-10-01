@@ -2,4 +2,7 @@
 
 pub mod prelude;
 
+pub mod blog;
+pub mod blog_membership;
+pub mod sea_orm_active_enums;
 pub mod user;

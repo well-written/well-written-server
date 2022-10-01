@@ -5,21 +5,16 @@ use sea_orm::entity::prelude::*;
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, SimpleObject, seaography::macros::Filter)]
 #[graphql(complex)]
-#[graphql(name = "User")]
-#[sea_orm(table_name = "user")]
+#[graphql(name = "Blog")]
+#[sea_orm(table_name = "blog")]
 pub struct Model {
     #[sea_orm(primary_key, auto_increment = false)]
     pub id: Uuid,
     #[sea_orm(column_type = "Text")]
-    pub username: String,
+    pub title: String,
     #[sea_orm(column_type = "Text")]
-    pub nickname: String,
-    #[sea_orm(column_type = "Text")]
-    pub email: String,
-    #[sea_orm(column_type = "Text", nullable)]
-    pub bio: Option<String>,
+    pub description: String,
     pub created_at: DateTimeUtc,
-    pub last_login_at: Option<DateTimeUtc>,
     pub deleted_at: Option<DateTimeUtc>,
 }
 

@@ -4,12 +4,26 @@ publish = false
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "well_written_server"
+
 [dependencies]
-async-graphql = { version = "4.0.14", features = ["uuid", "chrono"] }
+async-graphql = { version = "4.0.14", features = ["dataloader", "uuid", "chrono"] }
 async-graphql-axum = "4.0.14"
+async-trait = "0.1.57"
 axum = "0.5.16"
 chrono = "0.4.22"
+heck = "0.4.0"
+itertools = "0.10.5"
 rustls = "0.20.6"
-sea-orm = { version = "0.9.3", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"] }
+sea-orm = { version = "0.9.3", features = [
+  "sqlx-postgres",
+  "runtime-tokio-rustls",
+  "macros",
+] }
+seaography = { git = "https://github.com/XiNiHa/seaography", branch = "derive-features", features = [
+  "with-chrono",
+  "with-uuid",
+] }
 tokio = { version = "1.21.2", features = ["full"] }
 uuid = "1.1.2"
