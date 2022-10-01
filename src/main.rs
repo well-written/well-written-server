@@ -6,6 +6,7 @@ use axum::{
     Extension, Router,
 };
 
+mod entities;
 mod schema;
 
 async fn graphql_handler(

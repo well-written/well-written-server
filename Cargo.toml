@@ -5,7 +5,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-async-graphql = "4.0.14"
+async-graphql = { version = "4.0.14", features = ["uuid", "chrono"] }
 async-graphql-axum = "4.0.14"
 axum = "0.5.16"
+chrono = "0.4.22"
+rustls = "0.20.6"
+sea-orm = { version = "0.9.3", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"] }
 tokio = { version = "1.21.2", features = ["full"] }
+uuid = "1.1.2"
