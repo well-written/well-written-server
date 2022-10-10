@@ -1527,9 +1527,11 @@ dependencies = [
 [[package]]
 name = "seaography"
 version = "0.1.0"
-source = "git+https://github.com/XiNiHa/seaography?branch=derive-features#2683438ebcae088afc347883c4502f260d38ca85"
+source = "git+https://github.com/SeaQL/seaography#e7fe48798c589a42ca718dab63938f2a3333087d"
 dependencies = [
  "async-graphql",
+ "heck 0.4.0",
+ "itertools",
  "sea-orm",
  "seaography-derive",
 ]
@@ -1537,7 +1539,7 @@ dependencies = [
 [[package]]
 name = "seaography-derive"
 version = "0.1.0"
-source = "git+https://github.com/XiNiHa/seaography?branch=derive-features#2683438ebcae088afc347883c4502f260d38ca85"
+source = "git+https://github.com/SeaQL/seaography#e7fe48798c589a42ca718dab63938f2a3333087d"
 dependencies = [
  "bae",
  "heck 0.4.0",

@@ -6,6 +6,7 @@ use axum::{
     Extension, Router,
 };
 use well_written_server::schema;
+use std::net::SocketAddr;
 
 async fn graphql_handler(
     schema: Extension<schema::AppSchema>,
@@ -27,13 +28,21 @@ async fn main() {
     let schema = Schema::build(schema::QueryRoot, EmptyMutation, EmptySubscription).finish();
 
     let app = Router::new()
+        .route("/", get(|| async { "Hello, World!" }))
         .route("/graphql", get(graphiql).post(graphql_handler))
         .layer(Extension(schema));
 
-    println!("GraphiQL IDE: http://localhost:3000/graphql");
+    println!("GraphiQL IDE: http://localhost:8080/graphql");
 
-    axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
+    let port = std::env::var("FLY_IO_PORT")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(8080);
+
+    let address = SocketAddr::from(([0, 0, 0, 0], port));
+
+    axum::Server::bind(&address)
         .serve(app.into_make_service())
         .await
-        .unwrap()
+        .unwrap();    
 }
