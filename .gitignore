@@ -1,6 +1,4 @@
 /target
 
-cargo.lock
-
 # goorm IDE
 goorm.manifest
