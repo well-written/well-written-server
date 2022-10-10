@@ -21,7 +21,7 @@ sea-orm = { version = "0.9.3", features = [
   "runtime-tokio-rustls",
   "macros",
 ] }
-seaography = { git = "https://github.com/XiNiHa/seaography", branch = "derive-features", features = [
+seaography = { git = "https://github.com/SeaQL/seaography", features = [
   "with-chrono",
   "with-uuid",
 ] }
