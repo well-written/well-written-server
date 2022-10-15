@@ -1,4 +1,4 @@
-# fly.toml file generated for ww-backend on 2022-10-09T04:22:53Z
+# fly.toml file generated for well-written-server on 2022-10-15T13:45:26+09:00
 
 app = "well-written-server"
 kill_signal = "SIGINT"
@@ -6,34 +6,35 @@ kill_timeout = 5
 processes = []
 
 [env]
+SERVER_URL = "https://well-written-server.fly.dev"
+SERVER_PORT = "8080"
 
 [experimental]
-  allowed_public_ports = []
-  auto_rollback = true
+allowed_public_ports = []
+auto_rollback = true
 
 [[services]]
-  http_checks = []
-  internal_port = 8080
-  processes = ["app"]
-  protocol = "tcp"
-  script_checks = []
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-    type = "connections"
+http_checks = []
+internal_port = 8080
+processes = ["app"]
+protocol = "tcp"
+script_checks = []
+[services.concurrency]
+hard_limit = 25
+soft_limit = 20
+type = "connections"
 
-  [[services.ports]]
-    force_https = true
-    handlers = ["http"]
-    port = 80
+[[services.ports]]
+force_https = true
+handlers = ["http"]
+port = 80
 
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
+[[services.ports]]
+handlers = ["tls", "http"]
+port = 443
 
-  [[services.tcp_checks]]
-    grace_period = "1s"
-    interval = "15s"
-    restart_limit = 0
-    timeout = "2s"
-
+[[services.tcp_checks]]
+grace_period = "1s"
+interval = "15s"
+restart_limit = 0
+timeout = "2s"

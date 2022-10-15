@@ -8,11 +8,17 @@ edition = "2021"
 name = "well_written_server"
 
 [dependencies]
-async-graphql = { version = "4.0.14", features = ["dataloader", "uuid", "chrono"] }
+anyhow = "1.0.65"
+async-graphql = { version = "4.0.14", features = [
+  "dataloader",
+  "uuid",
+  "chrono",
+] }
 async-graphql-axum = "4.0.14"
 async-trait = "0.1.57"
 axum = "0.5.16"
 chrono = "0.4.22"
+dotenv = "0.15.0"
 heck = "0.4.0"
 itertools = "0.10.5"
 rustls = "0.20.6"
@@ -26,4 +32,5 @@ seaography = { git = "https://github.com/SeaQL/seaography", features = [
   "with-uuid",
 ] }
 tokio = { version = "1.21.2", features = ["full"] }
+tower-http = { version = "0.3.4", features = ["cors"] }
 uuid = "1.1.2"
