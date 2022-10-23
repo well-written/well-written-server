@@ -1,0 +1,54 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "cargo prisma"
+  output   = "../src/prisma.rs"
+}
+
+model User {
+  id              String           @id @db.Uuid
+  username        String           @db.Text
+  nickname        String           @db.Text
+  email           String           @db.Text
+  bio             String?          @db.Text
+  created_at      DateTime         @db.Timestamptz
+  last_login_at   DateTime?        @db.Timestamptz
+  deleted_at      DateTime?        @db.Timestamptz
+  blogMemberships BlogMembership[]
+
+  @@map("users")
+}
+
+model Blog {
+  id          String           @id @db.Uuid
+  title       String           @db.Text
+  description String           @db.Text
+  created_at  DateTime         @db.Timestamptz
+  deleted_at  DateTime?        @db.Timestamptz
+  memberships BlogMembership[]
+
+  @@map("blogs")
+}
+
+model BlogMembership {
+  id        String    @id @db.Uuid
+  user_id   String    @db.Uuid
+  blog_id   String    @db.Uuid
+  role      Role
+  joined_at DateTime  @db.Timestamptz
+  left_at   DateTime? @db.Timestamptz
+
+  user User @relation(fields: [user_id], references: [id])
+  blog Blog @relation(fields: [blog_id], references: [id])
+
+  @@map("blog_memberships")
+}
+
+enum Role {
+  ADMIN
+  OWNER
+  WRITER
+}
