@@ -15,22 +15,13 @@ async-graphql = { version = "4.0.14", features = [
   "chrono",
 ] }
 async-graphql-axum = "4.0.14"
-async-trait = "0.1.57"
 axum = "0.5.16"
 chrono = "0.4.22"
 dotenv = "0.15.0"
-heck = "0.4.0"
-itertools = "0.10.5"
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.2" }
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.2" }
 rustls = "0.20.6"
-sea-orm = { version = "0.9.3", features = [
-  "sqlx-postgres",
-  "runtime-tokio-rustls",
-  "macros",
-] }
-seaography = { git = "https://github.com/SeaQL/seaography", features = [
-  "with-chrono",
-  "with-uuid",
-] }
+serde = "1.0.147"
 tokio = { version = "1.21.2", features = ["full"] }
 tower-http = { version = "0.3.4", features = ["cors"] }
 uuid = "1.1.2"
